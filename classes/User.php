@@ -8,7 +8,8 @@ class User extends ORM {
     protected $firstname;
     protected $lastname;
     public $name='Guyve';
-        
+    public $coucou;
+
     public function getFirstname() {
         return $this->firstname;
     }
@@ -26,4 +27,5 @@ class User extends ORM {
         $this->laststname = $lastname;
         return $this;
     }
+    
 }
