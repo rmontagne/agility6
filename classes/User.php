@@ -7,9 +7,13 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
+
     public $name='Guyve';
     public $coucou;
 
+    protected $newAttribut;
+    protected $age;
+    
     public function getFirstname() {
         return $this->firstname;
     }
@@ -20,12 +24,25 @@ class User extends ORM {
     }
        
     public function getLastname() {
-        return $this->lasstname;
+        return $this->lastname;
     }
     
     public function setLastname($lastname) {
-        $this->laststname = $lastname;
+        $this->lastname = $lastname;
         return $this;
     }
     
+    public function getAge() {
+        return $this->age;
+    }
+    
+    public function setAge($age) {
+        $this->age = $age;
+        return $this;
+    }
+<<<<<<< HEAD
+    
 }
+=======
+}
+>>>>>>> 9ae182671ed88dbadf3d37bbff691d68e59d5a97
