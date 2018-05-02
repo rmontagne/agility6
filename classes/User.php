@@ -8,6 +8,7 @@ class User extends ORM {
     protected $firstname;
     protected $lastname;
     public $name='Guyve';
+	protected $newAttribut;
         
     public function getFirstname() {
         return $this->firstname;
