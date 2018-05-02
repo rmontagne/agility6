@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^([A-Z]{1}[a-z]+)-([A-Z]{1}[a-z]+)$ index.php?controller=$1&action=$2

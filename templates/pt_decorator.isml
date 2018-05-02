@@ -1,0 +1,10 @@
+<div>
+
+    Header
+    
+    <isreplace />
+    
+    
+     <isinclude template="footer" />
+
+</div>

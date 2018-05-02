@@ -1,0 +1,25 @@
+<isdecorate template='pt_decorator'>
+              
+    
+    <h3>Ajouter une entrée à la table product</h3>
+    <form method="post">
+    	<p>Nom du produit : 
+    	<input type="text" name="productName" /></p>
+    	<p>Prix :
+    	<input type="text" name="productPrice" /></p>
+    	<p>Quantité :
+    	<input type="text" name="productQty" /></p>
+    	<input type="submit" value="Valider">
+    </form>
+    
+    <h3>Ajouter une entrée à la table user</h3>
+    <form method="post">
+    	<p>Prénom : 
+    	<input type="text" name="userFirstname" /></p>
+    	<p>Nom :
+    	<input type="text" name="userLastname" /></p>
+    	<input type="submit" value="Valider">
+    </form>
+    
+</isdecorate>
+  

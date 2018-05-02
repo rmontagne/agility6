@@ -1,0 +1,168 @@
+<?php
+    
+    class Template {
+        
+        /*
+            - Condition (Baptiste)
+            - Boucle
+        */
+        
+        public static function render($tplName, $params) {
+            
+            if (!file_exists(dirname(__FILE__).'/../templates/'.$tplName.'.isml')) {
+                return 'Template '.$tplName.' not found !';
+            }
+            
+            $content = file_get_contents(dirname(__FILE__).'/../templates/'.$tplName.'.isml');
+        
+
+            return self::parseContent($content, $params);
+        }
+        
+        
+        static private function parseContent($content, $params) {
+            
+            //ISINCLUDE
+            $content = self::includeTpl($content, $params);
+        
+            //VARIABLE SIMPLE
+            $content = self::parseSimpleVar($content, $params);
+            
+            //VARIABLE OBJECT
+            $content = self::parseObjectVar($content, $params);
+            
+            //CONDITION
+            $content = self::condition($content, $params);
+                         
+            //BOUCLE
+            $content = self::decorate($content, $params);
+            
+            return $content;
+        }
+        
+        static private function decorate($content, $params) {       
+            //Allow only one decorator
+            if (preg_match('#<isdecorate template=\'([a-z_]+)\'>(.*)?</isdecorate>#s', $content, $matches)) {
+                
+                $decorator = self::render($matches[1], $params);
+                $isreplace = self::parseContent($matches[2], $params);
+                
+                return str_replace('<isreplace />', $isreplace, $decorator);               
+            }
+            
+            return $content;
+        }
+        
+        static private function condition($content, $params) {
+            
+            $recursivity = 'off';
+            if (preg_match_all('#(?s)<isif(.(?:(?!<isif).)*?)</isif>#', $content, $matches)) {
+                $recursivity = 'on';
+                foreach ($matches[1] as $match) { 
+                    
+                    if (preg_match('#condition=\'\${(.*)}\'#', $match, $matches)) {
+                        
+                        $m = $matches[1];
+                        foreach ($params as $key => $param) {
+                            $m = str_replace($key, '$'.$key, $m);
+                        }
+                    
+                        $var = '';
+                        foreach ($params as $key => $value) {
+                            if (is_object($value) || is_array($value)) {
+                                $var .= '$'.$key.' = unserialize(\''.serialize($value).'\');';
+                            } else {
+                                $var .= '$'.$key.' = "'.$value.'";';
+                            } 
+                        }
+                        $m = 'return ('.$m.');';
+                        $return = eval($var.$m);
+                        
+                        if (!$return) {
+                            $content = preg_replace('#<isif.*'.$matches[0].'.*</isif>#','', $content);
+                        }
+                        
+                        if ($return) {
+                            $content = preg_replace('#<isif.*'.$matches[0].'.*</isif>#', 'o', $content);
+                        }
+                    }
+                } 
+                
+                if($recursivity == 'on') {
+                    return self::condition($content, $params);
+                }
+            }
+                   
+            return $content;
+        }
+        
+        static private function includeTpl($content, $params) {
+            
+            if (preg_match_all('#<isinclude.*template.*="(.+)".*/>#', $content, $matches)) { 
+                foreach ($matches[1] as $match) { 
+                    $tplRequire = $match; 
+                    $requireContent = self::render($tplRequire,$params); 
+                    $content = preg_replace('#<isinclude.*template.*="'.$tplRequire.'".*/>#',$requireContent, $content); 
+                } 
+            }
+            
+            if (preg_match_all('#<isinclude.*remote.*="(.+)".*/>#', $content, $matches)) { 
+                foreach ($matches[1] as $match) {
+                    
+                    $tmp            = explode('-', $match);
+                    $controller     = $tmp[0];
+                    $action         = $tmp[1];
+
+                    $requireContent = Router::callController($controller, $action); 
+                    $content = preg_replace('#<isinclude.*remote.*="'.$match.'".*/>#',$requireContent, $content); 
+                } 
+            }
+            
+            return $content;
+        }
+        
+        static private function parseSimpleVar($content, $params) {
+            if (preg_match_all('#\${([a-zA-Z]+)}#', $content, $matches)) {
+                foreach ($matches[1] as $match) {
+                    if (isset($params[$match])) {
+                        $content = str_replace('${'.$match.'}', $params[$match], $content);
+                    }
+                }            
+            }
+            
+            return $content;
+        }
+        
+        static private function parseObjectVar($content, $params) {
+            if (preg_match_all('#\${([a-zA-Z.]+)}#', $content, $matches)) {
+                
+                foreach ($matches[1] as $match) {
+                    
+                    $attributes = explode('.', $match);
+                    $mainObject = $params[$attributes[0]];
+                   
+                    for($i = 1; $i < count($attributes); $i++) {
+                        
+                        $getter = 'get'.ucfirst($attributes[$i]);
+                        if (method_exists($mainObject, $getter)) {
+                            $mainObject = $mainObject->{$getter}();
+                        } else if (property_exists($mainObject, $attributes[$i])) {
+                            $mainObject = $mainObject->{$attributes[$i]};
+                        } else {
+                            $mainObject = '';
+                            break;
+                        }
+                    }
+                    if (!is_object($mainObject)) {
+                        $content = str_replace('${'.$match.'}', $mainObject, $content);
+                    } else {
+                        $content = str_replace('${'.$match.'}', '[Object]', $content);
+                    }
+                }            
+            }
+            
+            return $content;
+        }
+        
+        
+    }
