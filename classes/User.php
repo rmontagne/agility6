@@ -9,6 +9,7 @@ class User extends ORM {
     protected $lastname;
     public $name='Guyve';
 	protected $newAttribut;
+
         
     public function getFirstname() {
         return $this->firstname;
@@ -20,11 +21,11 @@ class User extends ORM {
     }
        
     public function getLastname() {
-        return $this->lasstname;
+        return $this->lastname;
     }
     
     public function setLastname($lastname) {
-        $this->laststname = $lastname;
+        $this->lastname = $lastname;
         return $this;
     }
 }
