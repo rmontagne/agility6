@@ -9,6 +9,7 @@ class User extends ORM {
     protected $lastname;
     protected $age;
 
+
         
     public function getFirstname() {
         return $this->firstname;
