@@ -7,7 +7,6 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
-
     protected $age;
     public $name='Guyve';
 
