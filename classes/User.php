@@ -19,7 +19,7 @@ class User extends ORM {
     }
        
     public function getLastname() {
-        return $this->lasstname;
+        return $this->lastname;
     }
     
     public function setLastname($lastname) {
