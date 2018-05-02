@@ -7,6 +7,7 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
+    public $name='Guyve';
         
     public function getFirstname() {
         return $this->firstname;
