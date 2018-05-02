@@ -17,4 +17,12 @@ class User extends ORM {
         return $this;
     }
        
+    public function getLastname() {
+        return $this->lasstname;
+    }
+    
+    public function setLastname($lastname) {
+        $this->laststname = $lastname;
+        return $this;
+    }
 }
