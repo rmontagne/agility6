@@ -7,7 +7,7 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
-	protected $newAttribut;
+    protected $newAttribut;
     protected $age;
     
     public function getFirstname() {
