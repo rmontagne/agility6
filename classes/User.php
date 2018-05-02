@@ -9,9 +9,7 @@ class User extends ORM {
     protected $lastname;
 	protected $newAttribut;
     protected $age;
-
-
-        
+    
     public function getFirstname() {
         return $this->firstname;
     }
