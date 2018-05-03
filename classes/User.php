@@ -40,9 +40,7 @@ class User extends ORM {
         $this->age = $age;
         return $this;
     }
-<<<<<<< HEAD
+
     
 }
-=======
-}
->>>>>>> 9ae182671ed88dbadf3d37bbff691d68e59d5a97
+
