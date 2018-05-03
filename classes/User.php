@@ -7,6 +7,10 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
+
+    public $name='Guyve';
+    public $coucou;
+
     protected $newAttribut;
     protected $age;
     
@@ -36,4 +40,9 @@ class User extends ORM {
         $this->age = $age;
         return $this;
     }
+<<<<<<< HEAD
+    
 }
+=======
+}
+>>>>>>> 9ae182671ed88dbadf3d37bbff691d68e59d5a97
