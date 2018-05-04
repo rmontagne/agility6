@@ -54,45 +54,36 @@
         }
         
         static private function condition($content, $params) {
-            
             $recursivity = 'off';
             if (preg_match_all('#(?s)<isif(.(?:(?!<isif).)*?)</isif>#', $content, $matches)) {
                 $recursivity = 'on';
-                foreach ($matches[1] as $match) { 
-                    
-                    if (preg_match('#condition=\'\${(.*)}\'#', $match, $matches)) {
-                        
-                        $m = $matches[1];
-                        foreach ($params as $key => $param) {
-                            $m = str_replace($key, '$'.$key, $m);
-                        }
-                    
-                        $var = '';
-                        foreach ($params as $key => $value) {
-                            if (is_object($value) || is_array($value)) {
-                                $var .= '$'.$key.' = unserialize(\''.serialize($value).'\');';
-                            } else {
-                                $var .= '$'.$key.' = "'.$value.'";';
-                            } 
-                        }
-                        $m = 'return ('.$m.');';
-                        $return = eval($var.$m);
-                        
-                        if (!$return) {
-                            $content = preg_replace('#<isif.*'.$matches[0].'.*</isif>#','', $content);
-                        }
-                        
-                        if ($return) {
-                            $content = preg_replace('#<isif.*'.$matches[0].'.*</isif>#', 'o', $content);
+                foreach ($matches[1] as $match) {
+                    preg_match('#(?s).*\${(.*)}.*?>(.*)#', $match, $matches);
+                    $condition = $matches[1];
+                    foreach ($params as $key => $param) {
+                        $condition = str_replace($key, '$'.$key, $condition);
+                    }
+                    $variable = '';
+                    foreach ($params as $key => $value) {
+                        if (is_object($value) || is_array($value)) {
+                            $variable .= '$'.$key.' = unserialize(\''.serialize($value).'\');';
+                        } else {
+                            $variable .= '$'.$key.' = "'.$value.'";';
                         }
                     }
-                } 
-                
-                if($recursivity == 'on') {
-                    return self::condition($content, $params);
+                    $condition = 'return ('.$condition.');';
+                    $return = eval($variable.$condition);
+                    if (!$return) {
+                        $content = preg_replace('#<isif.*'.$matches[2].'.*</isif>#','', $content);
+                    }
+                    if ($return) {
+                        $content = preg_replace('#<isif.*'.$matches[2].'.*</isif>#', $matches[2], $content);
+                    }
                 }
             }
-                   
+            if($recursivity == 'on') {
+                return self::condition($content, $params);
+            }
             return $content;
         }
         
