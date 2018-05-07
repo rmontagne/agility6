@@ -6,7 +6,7 @@
             - Condition (Baptiste)
             - Boucle
         */
-        
+
         public static function render($tplName, $params) {
 
             if (!file_exists(dirname(__FILE__).'/../templates/'.$tplName.'.isml')) {
@@ -22,12 +22,15 @@
 
         static private function parseContent($content, $params) {
 
+            //COMMENTAIRE
+            $content = self::comment($content);
+
             //ISINCLUDE
             $content = self::includeTpl($content, $params);
-            
+
             //LOOP
             $content = self::loop($content, $params);
-            
+
             //VARIABLE SIMPLE
             $content = self::parseSimpleVar($content, $params);
 
@@ -43,6 +46,14 @@
             return $content;
         }
 
+        static private function comment($content) {
+            //Allow only one decorator
+            if (preg_match_all('#(?s)<iscomment(.(?:(?!<iscomment).)*?)</iscomment>#', $content, $matches)) {
+                $content = str_replace($matches[0],'',$content);
+            }
+            return $content;
+        }
+
         static private function decorate($content, $params) {
             //Allow only one decorator
             if (preg_match('#<isdecorate template=\'([a-z_]+)\'>(.*)?</isdecorate>#s', $content, $matches)) {
@@ -55,26 +66,26 @@
 
             return $content;
         }
-        
-        
+
+
         static private function loop($content, $params) {
             if (preg_match_all('#<isloop\s+items\s*=\s*"\s*\$\{\s*(\w+)\s*\}\s*"\s+alias\s*=\s*"(\w+)".*>(.*)<\/isloop>#sU', $content, $matches, PREG_SET_ORDER)) {
-                                
+
                 foreach($matches as $match) {
                     if (isset($params[$match[1]]) && is_array($params[$match[1]])){
                         $inFor='';
                         foreach($params[$match[1]] as $item) {
                             $paramsLoop = array($match[2] => $item);
                             $params2 = array_merge($params, $paramsLoop);
-                            
+
                             $out = self::condition($match[3], $params2);
                             if (is_object($item)) {
                                 $inFor .= self::parseObjectVar($out, $params2);
                             } else {
-                               $inFor .= self::parseSimpleVar($out, $params2); 
-                            } 
+                               $inFor .= self::parseSimpleVar($out, $params2);
+                            }
                         }
-                        
+
                         $outFor = self::parseContent($inFor, $params);
                         $content = str_replace($match[0],$outFor, $content);
                     } else {
@@ -84,7 +95,7 @@
             }
             return $content;
         }
-        
+
         static private function condition($content, $params) {
             $recursivity = 'off';
             if (preg_match('#(?s)<isif(.(?:(?!<isif).)*?)</isif>#', $content, $matches)) {
