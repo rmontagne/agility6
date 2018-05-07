@@ -7,6 +7,25 @@
             - Boucle
         */
 
+        static private function loop($content, $params) {
+            if (preg_match_all('#<isloop\s+items\s*=\s*"\s*\$\{\s*(\w+)\s*\}\s*"\s+alias\s*=\s*"(\w+)".*>(.*)<\/isloop>#sU', $content, $matches, PREG_SET_ORDER)) {
+                foreach($matches as $match) {
+                    if (isset($params[$match[1]]) && is_array($params[$match[1]])){
+                        $inFor='';
+                        foreach($params[$match[1]] as $item) {
+                            $param = array_search($item, $params);
+                            $inFor .= str_replace($match[2],$param, $match[3]);
+                        }
+                        $outFor = self::parseContent($inFor, $params);
+                        $content = str_replace($match[0],$outFor, $content);
+                    } else {
+                        die('ERREUR DE PARAMETRE, TABLEAU D OBJET ATTENDU');
+                    }
+                }
+            }
+            return $content;
+        }
+        
         public static function render($tplName, $params) {
 
             if (!file_exists(dirname(__FILE__).'/../templates/'.$tplName.'.isml')) {
