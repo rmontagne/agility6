@@ -1,0 +1,17 @@
+<h1>
+
+Boucle isloop
+
+<isloop items="${products}" alias="element">
+    
+    <isif condition="${element->getName()=='MBP 2'}">
+        Bonjour ${element.name} 
+    </isif>
+    
+    <isif condition="${element->getName()=='TEST'}">
+        Bonjour ${element.name} 
+    </isif>
+    
+</isloop>
+
+</h1>

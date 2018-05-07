@@ -6,25 +6,6 @@
             - Condition (Baptiste)
             - Boucle
         */
-
-        static private function loop($content, $params) {
-            if (preg_match_all('#<isloop\s+items\s*=\s*"\s*\$\{\s*(\w+)\s*\}\s*"\s+alias\s*=\s*"(\w+)".*>(.*)<\/isloop>#sU', $content, $matches, PREG_SET_ORDER)) {
-                foreach($matches as $match) {
-                    if (isset($params[$match[1]]) && is_array($params[$match[1]])){
-                        $inFor='';
-                        foreach($params[$match[1]] as $item) {
-                            $param = array_search($item, $params);
-                            $inFor .= str_replace($match[2],$param, $match[3]);
-                        }
-                        $outFor = self::parseContent($inFor, $params);
-                        $content = str_replace($match[0],$outFor, $content);
-                    } else {
-                        die('ERREUR DE PARAMETRE, TABLEAU D OBJET ATTENDU');
-                    }
-                }
-            }
-            return $content;
-        }
         
         public static function render($tplName, $params) {
 
@@ -43,7 +24,10 @@
 
             //ISINCLUDE
             $content = self::includeTpl($content, $params);
-
+            
+            //LOOP
+            $content = self::loop($content, $params);
+            
             //VARIABLE SIMPLE
             $content = self::parseSimpleVar($content, $params);
 
@@ -53,7 +37,7 @@
             //CONDITION
             $content = self::condition($content, $params);
 
-            //BOUCLE
+            //DECORATE
             $content = self::decorate($content, $params);
 
             return $content;
@@ -71,7 +55,36 @@
 
             return $content;
         }
-
+        
+        
+        static private function loop($content, $params) {
+            if (preg_match_all('#<isloop\s+items\s*=\s*"\s*\$\{\s*(\w+)\s*\}\s*"\s+alias\s*=\s*"(\w+)".*>(.*)<\/isloop>#sU', $content, $matches, PREG_SET_ORDER)) {
+                                
+                foreach($matches as $match) {
+                    if (isset($params[$match[1]]) && is_array($params[$match[1]])){
+                        $inFor='';
+                        foreach($params[$match[1]] as $item) {
+                            $paramsLoop = array($match[2] => $item);
+                            $params2 = array_merge($params, $paramsLoop);
+                            
+                            $out = self::condition($match[3], $params2);
+                            if (is_object($item)) {
+                                $inFor .= self::parseObjectVar($out, $params2);
+                            } else {
+                               $inFor .= self::parseSimpleVar($out, $params2); 
+                            } 
+                        }
+                        
+                        $outFor = self::parseContent($inFor, $params);
+                        $content = str_replace($match[0],$outFor, $content);
+                    } else {
+                        die('ERREUR DE PARAMETRE, TABLEAU D OBJET ATTENDU');
+                    }
+                }
+            }
+            return $content;
+        }
+        
         static private function condition($content, $params) {
             $recursivity = 'off';
             if (preg_match('#(?s)<isif(.(?:(?!<isif).)*?)</isif>#', $content, $matches)) {
