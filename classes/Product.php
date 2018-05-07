@@ -5,7 +5,10 @@ require_once(dirname(__FILE__).'/ORM.php');
 class Product extends ORM {
     
     protected $name;
+    protected $description;
+    protected $reference;
     protected $price;
+    protected $image;
     protected $qty;
         
     public function getName() {
