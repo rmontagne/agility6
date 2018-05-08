@@ -58,5 +58,5 @@ class Inventory {
         }
         header('Location: Inventory-Show');
     }
-    
+     
 }

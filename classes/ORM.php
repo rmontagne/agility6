@@ -3,13 +3,11 @@
 require_once(dirname(__FILE__).'/Mysql.php');
 
 class ORM {
-    
     /*
         Norme : 
         Class Name == table Name to lowercase
         ID = id_tableName
     */
-    
     private $table;
     private $id;
     

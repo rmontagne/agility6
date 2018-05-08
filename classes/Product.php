@@ -10,7 +10,16 @@ class Product extends ORM {
     protected $price;
     protected $image;
     protected $qty;
-        
+    
+    public function getReference() {
+        return $this->reference;
+    }
+    
+    public function setReference($reference) {
+        $this->reference = $reference;
+        return $this;
+    }
+    
     public function getName() {
         return $this->name;
     }
