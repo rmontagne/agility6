@@ -7,7 +7,7 @@ class Mysql extends DB {
     private $_PDOInstance;
     private static $_instance = null;
     
-    public function __construct() 
+    protected function __construct() 
     {
         try 
         {
@@ -39,7 +39,21 @@ class Mysql extends DB {
         $statement ->closeCursor();
         return $result;
     }
-      
+    
+    public function getRow($query, $params = [])
+    {
+        $statement = $this->_PDOInstance->prepare($query.' LIMIT 1');
+        $statement->execute($params);
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        $statement ->closeCursor();
+        
+        if ($result) {
+            return $result[0];
+        }
+        
+        return $result;
+    }
+       
     public function getValue($query, $params = [])
     {
         $statement = $this->_PDOInstance->prepare($query);
@@ -49,20 +63,6 @@ class Mysql extends DB {
         return $result;   
     }
          
-    public function getRow($query, $params = [])
-    {
-        $statement = $this->_PDOInstance->prepare($query.' LIMIT 1');
-        $statement->execute($params); 
-        $result = $statement->fetchAll(PDO::FETCH_OBJ); 
-        $statement ->closeCursor();
-        
-        if ($result) {
-            return $result[0];
-        }
-        
-        return $result;
-    }
-    
     public function execute($query, $params = [])
     {
         $statement = $this->_PDOInstance->prepare($query);

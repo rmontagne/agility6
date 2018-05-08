@@ -14,15 +14,17 @@ class ORM {
     private $id;
     
     public function __construct($id = null) {
-        $this->id       = $id;
-        $this->table    = strtolower(get_called_class());
+        $this->id   = $id;
+        $this->table = strtolower(get_called_class());     
+    }
+    
+    public function getId(){
+        return $this->id;
     }
     
     public static function getInstances() {
         $objs       = [];
-        $className  = get_called_class();
-        $table      = strtolower($className);
-        
+        $table      = strtolower(get_called_class());
         $query      = 'SELECT id_'.$table.' as id FROM '.$table;
         
         $results    = Mysql::getInstance()->getResults($query);
@@ -35,53 +37,55 @@ class ORM {
     }
     
     public static function getInstance($id) {
-        $className = get_called_class();
-        $table  = strtolower($className);
+        
+        $className  = get_called_class();
+        $table      = strtolower($className);
+        
         $query  = 'SELECT * FROM '.$table.' WHERE id_'.$table.' = '.$id;
         
         $row    = Mysql::getInstance()->getRow($query);
         
         $obj    = new $className($id);
-        $obj->table = $table;
         
         foreach($row as $property => $value) {
             if (property_exists($obj, $property)) {
                 $obj->$property = $value;
             }
         }
-    
         return $obj;      
     }
     
     //ADD NEW OBJECT ON DB
     public function add() {
         
-        $vars       = get_object_vars($this);
+        $vars   = get_object_vars($this);
         $properties = [];
-        $values     = [];
+        $values=[];
         
         foreach ($vars as $property => $value) {
             if (in_array($property, ['id', 'table'])) {
                 continue;
             }
-            /*if($value == null) {
+            if($value == null) {
                 die('Propriété '.$property.' non définie, ajout objet incomplet impossible');
-            }*/
-            $properties[]   = $property;
-            $values[]       = '"'.$value.'"';
+            }
+            $properties[] = $property;
+            $values[] = '"'.$value.'"';
         }
 
         $query  = 'INSERT INTO '.$this->table.' ('.implode(',' , $properties).') VALUES ('.implode(',' , $values).')';
+        //die($query);
         Mysql::getInstance()->execute($query);
         $this->id = Mysql::getInstance()->lastInsertId();
     }
     
     //REMOVE OBJECT FROM DB
     public function remove() {
-        $query  = 'DELETE FROM '.$this->table.' WHERE id_'.$this->table.' = '.$this->id;
+        $query = 'DELETE FROM '.$this->table.' WHERE id_'.$this->table.' = '.$this->id;
         Mysql::getInstance()->execute($query);
     }
     
+    //UPDATE OBJECT IN DB
     public function update() {
     
         $vars   = get_object_vars($this);
@@ -95,7 +99,6 @@ class ORM {
         }
         
         $query  = 'UPDATE '.$this->table.' SET '.implode(',' , $fields).' WHERE id_'.$this->table.' = '.$this->id;
-        
         Mysql::getInstance()->execute($query);
     }
     

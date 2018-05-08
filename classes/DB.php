@@ -2,7 +2,7 @@
 
 abstract class DB {
     
-    abstract public function __construct();
+    abstract protected function __construct();
     
     abstract public static function getInstance();
     abstract public function getResults($query, $params = []);
