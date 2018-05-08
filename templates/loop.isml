@@ -3,7 +3,7 @@
 Boucle isloop
 
 <isloop items="${products}" alias="element">
-    
+
     <isif condition="${element->getName()=='MBP 2'}">
         Bonjour ${element.name} 
     </isif>
