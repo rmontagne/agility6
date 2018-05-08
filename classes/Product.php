@@ -20,12 +20,30 @@ class Product extends ORM {
         return $this;
     }
     
+    public function getDescription() {
+        return $this->description;
+    }
+    
+    public function setDescription($description) {
+        $this->description = $description;
+        return $this;
+    }
+    
     public function getPrice() {
         return $this->price;
     }
     
     public function setPrice($price) {
         $this->price = $price;
+        return $this;
+    }
+    
+    public function getImage() {
+        return $this->image;
+    }
+    
+    public function setImage($image) {
+        $this->image = $image;
         return $this;
     }
     
