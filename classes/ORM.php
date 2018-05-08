@@ -66,9 +66,10 @@ class ORM {
             if (in_array($property, ['id', 'table'])) {
                 continue;
             }
+            /*
             if($value == null) {
                 die('Propriété '.$property.' non définie, ajout objet incomplet impossible');
-            }
+            }*/
             $properties[] = $property;
             $values[] = '"'.$value.'"';
         }

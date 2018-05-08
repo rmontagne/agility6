@@ -4,14 +4,14 @@ require_once(dirname(__FILE__).'/../classes/Mysql.php');
 require_once(dirname(__FILE__).'/../classes/Product.php');
 require_once(dirname(__FILE__).'/../classes/User.php');
 
-class Inventory {
+class Productcontroller {
     
     public function Show() {
         $products   = Product::getInstances();
         $params = [
             'products'  =>  $products
         ];
-        return Template::render('inventory', $params);
+        return Template::render('products', $params);
     }
     
     public function Addproduct() {
@@ -22,7 +22,7 @@ class Inventory {
             $newProduct->setQty($_POST['qty']);
             $newProduct->add();
         }
-        header('Location: Inventory-Show');
+        header('Location: Productcontroller-Show');
     }
     
     public function Deleteprod() {
@@ -31,7 +31,7 @@ class Inventory {
             $prod = Product::getInstance($id);
             $prod->remove();   
         }
-        header('Location: Inventory-Show');
+        header('Location: Productcontroller-Show');
     }
     
     public function Updateprodview() {
@@ -41,7 +41,7 @@ class Inventory {
             $params = [
                 'product'  =>  $prod
             ];
-            return Template::render('inventoryUpdateForm', $params);
+            return Template::render('productUpdateForm', $params);
         }
     }
     
@@ -56,7 +56,7 @@ class Inventory {
                 $product-> update();
             } 
         }
-        header('Location: Inventory-Show');
+        header('Location: Productcontroller-Show');
     }
     
 }

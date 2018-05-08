@@ -16,8 +16,8 @@
         <isloop items="${products}" alias="product">
         <tr>
             <td style = "width : 10%"class = "align-middle tools">
-                <a href="Inventory-Updateprodview-${product.id}"><span class="fa fa-edit"></span></a>
-                <a href="Inventory-Deleteprod-${product.id}"><span class="fa fa-trash"></span></a>
+                <a href="Productcontroller-Updateprodview-${product.id}"><span class="fa fa-edit"></span></a>
+                <a href="Productcontroller-Deleteprod-${product.id}"><span class="fa fa-trash"></span></a>
             </td>
             <td style = "width : 10%" class = "align-middle">${product.id}</td>
             <td class = "align-middle">${product.name}</td>
@@ -29,7 +29,7 @@
     
 </table>
 
-<form action='Inventory-Addproduct' method='POST'>
+<form action='Productcontroller-Addproduct' method='POST'>
 	<h2>Formulaire d'ajout</h2>
     <div class='form-row'>
         <div class = 'form-group col-sm-4'>

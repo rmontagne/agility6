@@ -2,7 +2,7 @@
     <div class="navbar-nav">
         <span class="navbar-brand h1 mb-0">Agility Factory</span>
         <a class="nav-item nav-link" href="Hello-Show">Accueil</a>
-        <a class="nav-item nav-link" href="Inventory-Show">Inventaire</a>
+        <a class="nav-item nav-link" href="Productcontroller-Show">Inventaire</a>
         <a class="nav-item nav-link" href="Usercontroller-Show">Utilisateurs</a>
     </div>
 </nav>
