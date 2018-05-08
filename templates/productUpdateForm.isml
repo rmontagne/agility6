@@ -2,7 +2,7 @@
 
 <h2>Mise à jour prduit</h2> 
  
- <form action='Inventory-Updateprod-${product.id}' method='POST'>
+ <form action='Productcontroller-Updateprod?id=${product.id}' method='POST'>
     <div class='form-row'>
         <div class = 'form-group col-sm-4'>
             <label for='name'>Product Name</label>
