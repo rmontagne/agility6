@@ -1,0 +1,23 @@
+<isdecorate template='pt_decorator'>
+
+<h2>Mise à jour prduit</h2> 
+ 
+ <form action='Inventory-Updateprod-${product.id}' method='POST'>
+    <div class='form-row'>
+        <div class = 'form-group col-sm-4'>
+            <label for='name'>Product Name</label>
+            <input class="form-control" type='text' name='name' value="${product.name}"/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='price' >Product Price per Unit</label>
+            <input class="form-control" type='text' name='price' value="${product.price}"/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='qty'>Product Quantity in Inventory</label>
+            <input class="form-control" type='text' name='qty' value="${product.qty}"/>
+        </div>
+    </div>
+    <input class='btn btn-secondary' type='submit' value='Update Entry'/>
+ </form>
+    
+</isdecorate>

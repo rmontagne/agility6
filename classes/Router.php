@@ -3,11 +3,16 @@
     class Router {
         
         public static function run() {
+            if(!isset($_GET['controller']) OR !isset($_GET['action'])){
+                $controller = 'Hello';
+                $action     = 'Show';
+            } else {
+                $controller = $_GET['controller'];
+                $action     = $_GET['action'];
+            }
             
-            $controller = $_GET['controller'];
-            $action     = $_GET['action'];
-            
-            echo self::callController($controller, $action);   
+            //die($action);
+            echo self::callController($controller, $action);
         }
         
         public static function callController($controller, $action) {
@@ -32,6 +37,5 @@
             
             return call_user_func(array($controllerObject, $action));   
         }
-        
     } 
     

@@ -1,25 +1,62 @@
 <isdecorate template='pt_decorator'>
-              
+    <iscomment>
+    <h1>Page d'accueil</h1>
     
-    <h3>Ajouter une entrée à la table product</h3>
-    <form method="post">
-    	<p>Nom du produit : 
-    	<input type="text" name="productName" /></p>
-    	<p>Prix :
-    	<input type="text" name="productPrice" /></p>
-    	<p>Quantité :
-    	<input type="text" name="productQty" /></p>
-    	<input type="submit" value="Valider">
-    </form>
+    <h3>Affichage de variables simples et d'attributs d'objets</h3>
     
-    <h3>Ajouter une entrée à la table user</h3>
-    <form method="post">
-    	<p>Prénom : 
-    	<input type="text" name="userFirstname" /></p>
-    	<p>Nom :
-    	<input type="text" name="userLastname" /></p>
-    	<input type="submit" value="Valider">
-    </form>
+    <p>la variable test vaut: ${test}</p>
+    </iscomment>
+    <p>${customer.name.firstname} ${customer.name.lastname} est un client depuis ${customer.since} ans</p>
     
+    <p>Bienvenue <strong>${user.firstname} ${user.lastname}</strong>, vous êtes bien enregistré dans notre BDD.</p>
+    <iscomment>
+    <h3>isinclude</h3>
+
+    <isinclude template="accueil" />
+    <isinclude remote="Hello-Includetpl" />
+    
+    <h3>isif</h3>
+        
+    <isif condition="${test == '0' AND tes2 == 'alpha'}">
+        <p>A</p>
+    </isif>
+    
+    <isif condition="${test == '0'}">
+        <p>B</p>
+        <isif condition="${test == 'a'}">
+               <p>C</p>
+        </isif>
+        <isif condition="${test == '0'}">
+            <p>D</p>
+            <isif condition="${test == 'a'}">
+               <p>E</p>
+            </isif>
+            <isif condition="${test == '0'}">
+               <p>${user.firstname}</p>
+            </isif>
+        </isif>
+    </isif>
+    
+    <isif condition="${test == 1}">
+        <p>G</p>
+    </isif>
+    
+    <isif condition="${test == 0}">
+        <p>H</p>
+    </isif>
+    
+    <h3>isloop</h3>
+    
+    <p>Les invités sont: </p>
+
+    <isloop items="${guests}" alias="var">
+        <p>${var}</p>
+    </isloop> 
+    </iscomment>
+    <p>Les clients sont: </p>
+    <isloop items="${customers}" alias="object">
+        <p>${object.name.firstname} ${object.name.lastname} depuis ${object.since} ans</p>
+    </isloop> 
+
 </isdecorate>
   

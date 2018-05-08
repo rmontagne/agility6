@@ -1,0 +1,23 @@
+<isdecorate template='pt_decorator'>
+
+<h1>Liste des utilisateurs enregistrés</h1>        
+<table class="table table-striped table table-bordered">
+    <thead class="text-white bg-secondary">
+       <tr>
+           <th>Id</th>
+           <th>Firstname</th>
+           <th>Lastname</th>
+       <tr>
+    </thead>
+    <tbody>
+        <isloop items="${users}" alias="user">
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.firstname}</td>
+            <td>${user.lastname}</td>
+        </tr>
+        </isloop> 
+    </tbody>
+</table>
+
+</isdecorate>

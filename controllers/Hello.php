@@ -5,61 +5,42 @@ require_once(dirname(__FILE__).'/../classes/Product.php');
 require_once(dirname(__FILE__).'/../classes/User.php');
 
 class Hello {
-    
-    
-    public function Loop() {
-        
-        $tabs = ['Romain', 'Romain3', 'Romain5'];
-        
-        return Template::render('loop', array(
-            'tabs' => $tabs,
-            'products' => Product::getInstances(),
-        ));
-    }
+
     
     public function Show() {
         
-        //GET ALL OBJECTS
-        /*$products   = Product::getInstances();
+        $customer = new stdClass();
+        $customer->name = new stdClass();
+        $customer->since = 45;
+        $customer->name->firstname = 'Henri';
+        $customer->name->lastname = 'Le Lion';
         
-        //READ | GET
-        $product    = Product::getInstance(1);
-        $user       = User::getInstance(2);
+        $customer2 = new stdClass();
+        $customer2->name = new stdClass();
+        $customer2->since = 62;
+        $customer2->name->firstname = 'Louis';
+        $customer2->name->lastname = 'Le Brave';
         
-        //UPDATE
-        //$product->setName('Iphone');
-        //$product->update();
+        $customers = [$customer, $customer2];
         
-        //ADD
-        $newP = new Product();
-        $newP->setName('Iphone 10');
-        $newP->add();
+        $guest1 = 'Riri';
+        $guest2 = 'Fifi';
+        $guest3 = 'Loulou';
         
-        //REMOVE
-        $product->remove();*/
+        $guests = [$guest1, $guest2, $guest3];
         
-        if (isset($_POST['productName']) && isset($_POST['productPrice']) && isset($_POST['productQty'])) {
-            $newP = new Product();
-            $newP->setName($_POST['productName']);
-            $newP->setPrice($_POST['productPrice']);
-            $newP->setQty($_POST['productQty']);
-            $newP->add();
-            echo 'Le produit a été ajouté à la table.';
-        }
+        $user = User::getInstance(1);
+        $products = Product::getInstances(1);
         
-        if (isset($_POST['userFirstname']) && isset($_POST['userLastname'])) {
-            $newUser = new User();
-            $newUser->setFirstname($_POST['userFirstname']);
-            $newUser->setLastname($_POST['userLastname']);
-            $newUser->add();
-            echo 'L\'utilisateur a été ajouté à la table.';
-        }
-                
-        return Template::render('hello', array(
-            //'var'   => 'toto',
-            //'user'  => $user,
-            //'product' => $product
-        ));  
+        $params = [
+            'user'  =>  $user,
+            'test'  =>  '0',
+            'tes2'  =>  'alpha',
+            'customer' => $customer,
+            'customers' => $customers,
+            'guests'=> $guests
+        ];       
+        return Template::render('hello', $params);  
     }
     
     public function Includetpl() {

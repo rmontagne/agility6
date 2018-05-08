@@ -1,0 +1,51 @@
+<isdecorate template='pt_decorator'>
+
+<h2>Liste des produits en inventaire</h2> 
+       
+<table class = "table table-bordered table-striped">
+	<thead class="text-white bg-secondary">
+	   <tr>
+	       <th id="empty"></th>
+	       <th>Id</th>
+	       <th>Name</th>
+	       <th>Price</th>
+	       <th>Qty</th>
+	   </tr>
+	</thead>
+    <tbody>
+        <isloop items="${products}" alias="product">
+        <tr>
+            <td style = "width : 10%"class = "align-middle tools">
+                <a href="Inventory-Updateprodview-${product.id}"><span class="fa fa-edit"></span></a>
+                <a href="Inventory-Deleteprod-${product.id}"><span class="fa fa-trash"></span></a>
+            </td>
+            <td style = "width : 10%" class = "align-middle">${product.id}</td>
+            <td class = "align-middle">${product.name}</td>
+            <td class = "align-middle">${product.price}</td>
+            <td class = "align-middle">${product.qty}</td>
+        </tr>
+        </isloop> 
+    </tbody>
+    
+</table>
+
+<form action='Inventory-Addproduct' method='POST'>
+	<h2>Formulaire d'ajout</h2>
+    <div class='form-row'>
+        <div class = 'form-group col-sm-4'>
+            <label for='name'>Product Name</label>
+            <input class="form-control" type='text' name='name'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='price' >Product Price per Unit</label>
+            <input class="form-control" type='text' name='price'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='qty'>Product Quantity in Inventory</label>
+            <input class="form-control" type='text' name='qty'/>
+        </div>
+    </div>
+    <input class='btn btn-secondary' type='submit' value='Add Entry'/>
+</form>
+    
+</isdecorate>

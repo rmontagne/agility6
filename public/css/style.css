@@ -1,0 +1,33 @@
+body {
+	padding-top: 75px;
+}
+
+.tools {
+	font-size: 1.5em;
+}
+
+table, th, td {
+	text-align: center;
+}
+
+table {
+	margin-top: 30px;
+}
+
+.footer {
+	font-size: 0.8em;
+}
+
+label {
+	font-weight: bold;
+	font-size: 1.3em;
+	text-decoration: underline;
+}
+
+form {
+	margin: 40px 0px;
+	padding: 10px;
+	border: 2px solid #cccec4;
+    border-radius: 10px;
+}
+
