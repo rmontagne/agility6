@@ -18,6 +18,14 @@ class ORM {
         $this->table    = strtolower(get_called_class());
     }
     
+    public function getId() {
+        return $this->id;
+    }
+    
+    public function getTable() {
+        return $this->table;
+    }
+    
     public static function getInstances() {
         $objs       = [];
         $className  = get_called_class();

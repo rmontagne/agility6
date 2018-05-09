@@ -14,6 +14,7 @@ class Hello {
         return Template::render('loop', array(
             'tabs' => $tabs,
             'products' => Product::getInstances(),
+            'users' => User::getInstances()
         ));
     }
     

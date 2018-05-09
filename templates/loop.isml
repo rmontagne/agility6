@@ -2,8 +2,17 @@
 
 Boucle isloop
 
+</h1>
 <isloop items="${products}" alias="element">
-    
+    Bonjour ${element.name}
+</isloop>
+<h1>
+<isloop items="${products}" alias="element">
+    Bonjour ${element.name}
+    <isloop items="${users}" alias="user">
+    	Bonjour ${user.firstname}
+    </isloop>
+    Bonjour ${element.name}
     <isif condition="${element->getName()=='MBP 2'}">
         Bonjour ${element.name} 
     </isif>
@@ -11,7 +20,42 @@ Boucle isloop
     <isif condition="${element->getName()=='TEST'}">
         Bonjour ${element.name} 
     </isif>
-    
 </isloop>
-
 </h1>
+<isloop items="${products}" alias="element">
+				<isloop items="${users}" alias="user">
+					<td>${user.firstname}</td>
+				</isloop>
+				<td>${element.name}</td>
+				<td>${element.price}</td>
+				<td>${element.qty}</td>
+				<td>${element.table}</td>
+				<td>${element.id}</td>
+		</isloop>
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Prix</th>
+			<th>Quantity</th>
+			<th>Table</th>
+			<th>ID</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<isloop items="${products}" alias="element">
+			<tr>
+				<isloop items="${users}" alias="user">
+					<td>${user.firstname}</td>
+				</isloop>
+				<td>${element.name}</td>
+				<td>${element.price}</td>
+				<td>${element.qty}</td>
+				<td>${element.table}</td>
+				<td>${element.id}</td>
+			</tr>
+		</isloop>
+	</tbody>
+</table>
