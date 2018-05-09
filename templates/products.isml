@@ -1,7 +1,40 @@
 <isdecorate template='pt_decorator'>
 
 <h2>Liste des produits en inventaire</h2> 
-       
+
+
+<form action='Inventory-Addproduct' method='POST'>
+    <h2>Formulaire d'ajout</h2>
+    <div class='form-row'>
+        <div class = 'form-group col-sm-4'>
+            <label for='name'>Product Name</label>
+            <input class="form-control" type='text' name='name'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='price' >Product Price per Unit</label>
+            <input class="form-control" type='text' name='price'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='qty'>Product Quantity in Inventory</label>
+            <input class="form-control" type='text' name='qty'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='description'>Description</label>
+            <input class="form-control" type='text' name='description'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='reference'>Reference</label>
+            <input class="form-control" type='text' name='reference'/>
+        </div>
+        <div class = 'form-group col-sm-4'>
+            <label for='image'>Image</label>
+            <input class="form-control" type='text' name='image'/>
+        </div>
+        
+    </div>
+    <input class='btn btn-secondary' type='submit' value='Add Entry'/>
+</form>
+    
 <table class = "table table-bordered table-striped">
 	<thead class="text-white bg-secondary">
 	   <tr>
@@ -28,30 +61,12 @@
             <td class = "align-middle">${product.qty}</td>
             <td class = "align-middle">${product.description}</td>
             <td class = "align-middle">${product.reference}</td>
-            <td class = "align-middle">${product.image}</td>
+            <td class = "align-middle"><img src="https://${product.image}"/></td>
         </tr>
         </isloop> 
     </tbody>
     
 </table>
 
-<form action='Inventory-Addproduct' method='POST'>
-	<h2>Formulaire d'ajout</h2>
-    <div class='form-row'>
-        <div class = 'form-group col-sm-4'>
-            <label for='name'>Product Name</label>
-            <input class="form-control" type='text' name='name'/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='price' >Product Price per Unit</label>
-            <input class="form-control" type='text' name='price'/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='qty'>Product Quantity in Inventory</label>
-            <input class="form-control" type='text' name='qty'/>
-        </div>
-    </div>
-    <input class='btn btn-secondary' type='submit' value='Add Entry'/>
-</form>
     
 </isdecorate>

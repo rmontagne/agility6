@@ -19,8 +19,7 @@ class Import {
         $parser = new CSVParser($content,$headers);
         $parser->parse();
         $products = $parser->data();
-        echo var_dump($products[0]['price']);
-       foreach($products as $product) {
+        foreach($products as $product) {
             $newProduct = new Product;
             foreach($product as $key => $value) {
                 $setter = 'set'.ucfirst($key);

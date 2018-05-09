@@ -23,7 +23,7 @@ class ORM {
     public static function getInstances() {
         $objs       = [];
         $table      = strtolower(get_called_class());
-        $query      = 'SELECT id_'.$table.' as id FROM '.$table;
+        $query      = 'SELECT id_'.$table.' as id FROM '.$table .' ORDER BY id ASC';
         
         $results    = Mysql::getInstance()->getResults($query);
         
