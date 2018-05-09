@@ -9,8 +9,10 @@ abstract class Parser
     
     abstract function parse();
     
-    public function __construct($content) {
-        $this->content=$content;
+    public function __construct($content,$headers) {
+        $this->content = $content;
+        $this->headers = $headers;
+        $this->colNumber = count($headers);
     }
     public function __toString() {
         return  'linumber : '.$this->lineNumber.'<br/>'.

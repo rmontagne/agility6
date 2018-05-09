@@ -1,8 +1,8 @@
 <isdecorate template='pt_decorator'>
 
-<h2>Mise à jour prduit</h2> 
+<h2>Mise à jour produit</h2> 
  
- <form action='Productcontroller-Updateprod?id=${product.id}' method='POST'>
+ <form action='Inventory-Updateprod?id=${product.id}' method='POST'>
     <div class='form-row'>
         <div class = 'form-group col-sm-4'>
             <label for='name'>Product Name</label>

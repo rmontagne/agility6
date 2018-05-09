@@ -9,19 +9,17 @@ class CSVParser extends Parser
         $firstLoop = true;
         
         foreach($tmp as $row) {
-            
             $cols = explode(";",$row);
-            if($firstLoop)
-            {
-                $this->headers = $cols;
-                $this->colNumber = count($cols);
-                $firstLoop=false;
-            } else {
-                if(count($cols)!=$this->colNumber){
-                    continue;
-                }
-                $this->data[] = array_combine($this->headers,$cols);
+            
+            foreach ($cols as $field) {
+                $field = addslashes ($field);
+                
             }
+
+            if(count($cols)!=$this->colNumber){
+                continue;
+            }
+            $this->data[] = array_combine($this->headers,$cols);
         }
         return $this->data;
     }

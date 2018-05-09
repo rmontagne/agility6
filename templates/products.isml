@@ -5,11 +5,14 @@
 <table class = "table table-bordered table-striped">
 	<thead class="text-white bg-secondary">
 	   <tr>
-	       <th id="empty"></th>
+	       <th></th>
 	       <th>Id</th>
 	       <th>Name</th>
 	       <th>Price</th>
 	       <th>Qty</th>
+	       <th>Description</th>
+	       <th>Reference</th>
+	       <th>Image</th>	       
 	   </tr>
 	</thead>
     <tbody>
@@ -17,12 +20,15 @@
         <tr>
             <td style = "width : 10%"class = "align-middle tools">
                 <a href="Inventory-Updateprodview?id=${product.id}"><span class="fa fa-edit"></span></a>
-                <a href="Inventoryr-Deleteprod?id=${product.id}"><span class="fa fa-trash"></span></a>
+                <a href="Inventory-Deleteprod?id=${product.id}"><span class="fa fa-trash"></span></a>
             </td>
             <td style = "width : 10%" class = "align-middle">${product.id}</td>
             <td class = "align-middle">${product.name}</td>
             <td class = "align-middle">${product.price}</td>
             <td class = "align-middle">${product.qty}</td>
+            <td class = "align-middle">${product.description}</td>
+            <td class = "align-middle">${product.reference}</td>
+            <td class = "align-middle">${product.image}</td>
         </tr>
         </isloop> 
     </tbody>

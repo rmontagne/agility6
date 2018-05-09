@@ -43,7 +43,16 @@ class Product extends ORM {
     }
     
     public function setPrice($price) {
-        $this->price = $price;
+        $this->price = floatval($price);
+        return $this;
+    }
+    
+    public function getQty() {
+        return $this->qty;
+    }
+    
+    public function setQty($qty) {
+        $this->qty = intval($qty) ;
         return $this;
     }
     
@@ -55,14 +64,4 @@ class Product extends ORM {
         $this->image = $image;
         return $this;
     }
-    
-    public function getQty() {
-        return $this->qty;
-    }
-    
-    public function setQty($qty) {
-        $this->qty = $qty;
-        return $this;
-    }
-    
 }

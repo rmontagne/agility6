@@ -8,27 +8,31 @@ require_once(dirname(__FILE__).'/../classes/CSVParser.php');
 
 class Import {
     
+    public function Show() {
+        echo 'ON USER Show';
+    }
     public function Add() {
         
         $path = dirname(__FILE__).'/../import/products-arome-naturel.csv';
         $content = file_get_contents($path);
-        
-        $parser = new CSVParser($content);
+        $headers = ['reference','name','description','price','image'];
+        $parser = new CSVParser($content,$headers);
         $parser->parse();
         $products = $parser->data();
-
-        foreach($products as $product) {
-           
+        echo var_dump($products[0]['price']);
+       foreach($products as $product) {
             $newProduct = new Product;
             foreach($product as $key => $value) {
                 $setter = 'set'.ucfirst($key);
-                echo var_dump($setter);
+               
                 if (method_exists($newProduct, $setter)) {
-                    echo var_dump($setter);
                     $newProduct->$setter($value);
                 }
-            }            
+            }
+            echo var_dump($newProduct);
+            $newProduct->add();
         }
+        
         //        return Template::render('import', $params);
     }
    

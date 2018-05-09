@@ -61,7 +61,7 @@ class ORM {
         $values=[];
         
         foreach ($vars as $property => $value) {
-            if (in_array($property, ['id', 'table'])) {
+            if (in_array($property, ['id', 'table', 'qty'])) {
                 continue;
             }
             /*
@@ -73,7 +73,6 @@ class ORM {
         }
 
         $query  = 'INSERT INTO '.$this->table.' ('.implode(',' , $properties).') VALUES ('.implode(',' , $values).')';
-        //die($query);
         Mysql::getInstance()->execute($query);
         $this->id = Mysql::getInstance()->lastInsertId();
     }
