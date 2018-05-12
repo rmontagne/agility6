@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(__FILE__).'/../classes/Mysql.php');
-require_once(dirname(__FILE__).'/../classes/Product.php');
-require_once(dirname(__FILE__).'/../classes/User.php');
+require_once(dirname(__FILE__).'/../classes/DataBase/Mysql.php');
+require_once(dirname(__FILE__).'/../classes/ORM/Product.php');
+require_once(dirname(__FILE__).'/../classes/ORM/User.php');
 
 class Clients {
     
@@ -49,9 +49,9 @@ class Clients {
             $id = $_GET['id'];
             if(isset($_POST['firstname']) AND isset($_POST['lastname'])){
                 $newClient = User::getInstance($id);
-                $product->setFirstname($_POST['firstname']);
-                $product->setLastname($_POST['lastname']);
-                $product-> update();
+                $newClient->setFirstname($_POST['firstname']);
+                $newClient->setLastname($_POST['lastname']);
+                $newClient-> update();
             } 
         }
         header('Location: Clients-Show');

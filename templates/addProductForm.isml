@@ -1,0 +1,48 @@
+<div class="modal fade" id="addFrom" tabindex="-1" role="dialog"
+	aria-labelledby="addFrom" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form action='Inventory-Addproduct?access=back&page=${page}' method='POST'>
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Formulaire
+						d'ajout</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class='form-group'>
+						<label for='name'>Nom du produit Name</label> <input class="form-control"
+							type='text' name='name' required />
+					</div>
+					<div class='form-group'>
+						<label for='price'>Prix</label> <input
+							class="form-control" type='number' name='price' required />
+					</div>
+					<div class='form-group'>
+						<label for='qty'>Quantité</label> <input
+							class="form-control" type='number' name='qty' required />
+					</div>
+					<div class='form-group'>
+						<label for='description'>Description</label> <input
+							class="form-control" type='text' name='description' />
+					</div>
+					<div class='form-group'>
+						<label for='reference'>Référence</label> <input
+							class="form-control" type='text' name='reference' />
+					</div>
+					<div class='form-group'>
+						<label for='image'>Photo</label> <input class="form-control"
+							type='text' name='image' />
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Fermer</button>
+					<input class='btn btn-secondary' type='submit' value='Add Entry' />
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

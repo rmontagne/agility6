@@ -1,0 +1,33 @@
+<div class="table-responsive">
+	<table class="table table-bordered table-striped">
+		<thead class="text-white bg-secondary">
+			<tr>
+				<th></th>
+				<th>Ref</th>
+				<th>Nom</th>
+				<th>Prix</th>
+				<th>Quantité</th>
+				<th>Date de création</th>
+				<th>Date de dernière modification</th>
+			</tr>
+			<isloop items="${products}" alias="product">
+			<tr>
+				<td><span class="icons-span"> <a
+						href="Inventory-Updateprodview?id=${product.id}&page=${page}"
+						class="icon-link"><span class="fa fa-edit"></span></a> <a
+						href="Inventory-Deleteprod?id=${product.id}&page=${page}"
+						class="icon-link"><span class="fa fa-trash"></span></a> <a
+						href="Inventory-Zoomprod?id=${product.id}&page=${page}"
+						class="icon-link"><span class="fa fa-search-plus"></span></a>
+				</span></td>
+				<td scope="row" class="align-middle">${product.reference}</td>
+				<td class="align-middle">${product.name}</td>
+				<td class="align-middle">${product.price} €</td>
+				<td class="align-middle">${product.qty}</td>
+				<td class="align-middle">${product.id} ${product.cdate}</td>
+				<td class="align-middle">${product.table} ${product.mdate}</td>
+			</tr>
+			</isloop>
+		</tbody>
+	</table>
+</div>

@@ -1,9 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-    <div class="navbar-nav">
-        <span class="navbar-brand h1 mb-0">Agility Factory</span>
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+    <div class="navbar-nav align-items-center">
+        <span class="navbar-brand h1 mb-0 pb-0 mr-2"><img src="/../public/image/agilitylogo.png"/></span>    
         <a class="nav-item nav-link" href="Hello-Show">Accueil</a>
-        <a class="nav-item nav-link" href="Inventory-Show">Inventaire</a>
+        <a class="nav-item nav-link" href="Inventory-Show?access=front">Catalogue</a>
+        <a class="nav-item nav-link" href="Inventory-Show?access=back">Inventaire</a>
         <a class="nav-item nav-link" href="Clients-Show">Clients</a>
-        <a class="nav-item nav-link" href="Import-Show">Import</a>
+
     </div>
 </nav>

@@ -5,12 +5,12 @@
         <meta charset = "utf-8"/>
         <title>MVC AF6</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel = "stylesheet" type = "text/css" href = "https://cdn.datatables.net/v/bs4-4.0.0/jq-3.2.1/dt-1.10.16/datatables.min.css"/>
+        <link rel = "stylesheet" type = "text/css" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"/>
         <link rel = "stylesheet" type = "text/css" href = "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-        <link rel = "stylesheet" href="./public/css/style.css" >
+        <link rel = "stylesheet" href="./public/css/style2.css" >
     </head>
     <body>
-        <div>
+        <div id="pagebody">
             <isinclude template="header" />
             
             <div class="container">
@@ -21,7 +21,9 @@
             </div>            
             
         </div>
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.0.0/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="/../public/js/script.js"></script>
     </body>
 </html>
 

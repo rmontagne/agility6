@@ -11,6 +11,32 @@ class Product extends ORM {
     protected $image;
     protected $qty;
     
+    public static function exists($reference) {
+        $table = strtolower(get_called_class());
+        $query = 'SELECT COUNT(*) AS count FROM '.$table.' WHERE reference = '.$reference;
+        $count = Mysql::getInstance()->getValue($query);
+        return $count;
+    }
+    
+    public static function getInstanceByRef($reference) {
+        $table      = strtolower(get_called_class());
+        $className  = get_called_class();
+        $query      = 'SELECT * FROM '.$table.' WHERE reference = '.$reference;;
+        $row        = Mysql::getInstance()->getRow($query);
+        if(is_null($row)) {
+            return null;
+        } else {
+            $id = $row->id_product;
+            $obj    = new $className($id);
+            foreach($row as $property => $value) {
+                if (property_exists($obj, $property)) {
+                    $obj->$property = $value;
+                }
+            }
+            return $obj;
+        }
+    }
+    
     public function getReference() {
         return $this->reference;
     }

@@ -1,0 +1,23 @@
+<isdecorate template='pt_decorator'>
+
+	<div class="d-flex flex-row align-items-start my-3 mycard">
+	        <img class = "m-3" src="https://${product.image}" alt="image produit">
+	        <div class="card m-3" style="width: 1000px;">             
+	            <div class="card-body">
+	                <h4 class="card-title">${product.name}</h4>
+	                <p class="card-text">${product.description}</p>
+	                <p><strong>Référence produit:</strong> ${product.reference}</p>
+	                <p><strong>Prix:</strong> ${product.price} €</p>
+	                <p>${product.qty}</p>
+	                <a href="#" class="btn btn-dark">Ajouter au panier</a>
+	                <span class = "icons-span">
+	                    <a href="Inventory-Updateprodview?id=${product.id}" class="icon-link"><span class="fa fa-edit"></span></a>
+	                    <a href="Inventory-Deleteprod?id=${product.id}" class="icon-link"><span class="fa fa-trash"></span></a>
+	                    <a href="Inventory-Zoomprod?id=${product.id}" class="icon-link"><span class="fa fa-search-plus"></span></a>
+	                </span>
+	            </div>
+	        </div>
+	</div>
+    
+</isdecorate>
+

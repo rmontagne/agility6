@@ -15,7 +15,6 @@ class CSVParser extends Parser
                 $field = addslashes ($field);
                 
             }
-
             if(count($cols)!=$this->colNumber){
                 continue;
             }

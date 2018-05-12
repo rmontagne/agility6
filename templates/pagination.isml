@@ -1,0 +1,18 @@
+<div id= "pagination">
+    <nav class="navbar">
+      <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="Inventory-Show?access=${access}&page=1">Début</a></li>
+          <isloop items="${pages}" alias="pageN">
+               <iscomment><isif condition="${pageN == page}">
+                    <p>essai</p>
+               </isif></iscomment>
+               <li class="page-item"><a class="page-link" href="Inventory-Show?access=${access}&page=${pageN}">${pageN}</a></li>
+          </isloop>
+          <li class="page-item"><a class="page-link" href="Inventory-Show?access=${access}&page=${lastpage}">Fin</a></li>
+      </ul>
+      <form class="form-inline" action="Inventory-Show?access=${access}" method="post">
+          <button class="btn my-2" type="submit">Page</button>
+          <input class="form-control ml-sm-2" type="number" name="page" step="1" min="1" max="${lastpage}" required>
+      </form>
+    </nav>
+</div>

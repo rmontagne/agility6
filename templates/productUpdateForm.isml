@@ -1,35 +1,40 @@
 <isdecorate template='pt_decorator'>
 
-<h2>Mise à jour produit</h2> 
- 
- <form action='Inventory-Updateprod?id=${product.id}' method='POST'>
-    <div class='form-row'>
-        <div class = 'form-group col-sm-4'>
-            <label for='name'>Product Name</label>
-            <input class="form-control" type='text' name='name' value="${product.name}"/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='price' >Product Price per Unit</label>
-            <input class="form-control" type='text' name='price' value="${product.price}"/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='qty'>Product Quantity in Inventory</label>
-            <input class="form-control" type='text' name='qty' value="${product.qty}"/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='description'>Description</label>
-            <input class="form-control" type='text' name='description' value="${product.description}"/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='reference'>Reference</label>
-            <input class="form-control" type='text' name='reference' value="${product.reference}"/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='image'>Image</label>
-            <input class="form-control" type='text' name='image' value="${product.image}"/>
-        </div>
-    </div>
-    <input class='btn btn-secondary' type='submit' value='Update Entry'/>
- </form>
-    
+<h2>Modification</h2>
+
+<form action='Inventory-Updateprod?id=${product.id}&page=${page}' method='POST'>
+
+	<h5 class="modal-title" id="exampleModalLabel">Formulaire de
+		modification</h5>
+
+	<div class='form-group'>
+		<label for='name'>Nom du produit : </label> <input class="form-control"
+			type='text' name='name' value="${product.name}" />
+	</div>
+	<div class='form-group'>
+		<label for='price'>Prix : </label> <input
+			class="form-control" type='text' name='price'
+			value="${product.price}" />
+	</div>
+	<div class='form-group'>
+		<label for='qty'>Quantité : </label> <input
+			class="form-control" type='text' name='qty' value="${product.qty}" />
+	</div>
+	<div class='form-group'>
+		<label for='description'>Description : </label>
+		<textarea class="form-control" name='description' cols=40 rows=10>
+		  ${product.description}
+		</textarea>
+	</div>
+	<div class='form-group'>
+		<label for='reference'>Référence</label> <input class="form-control"
+			type='text' name='reference' value="${product.reference}" />
+	</div>
+	<div class='form-group'>
+		<label for='image'>Photo : </label> <input class="form-control"
+			type='text' name='image' value="${product.image}" />
+	</div>
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	<input class='btn btn-secondary' type='submit' value='Update Entry' />
+</form>
 </isdecorate>

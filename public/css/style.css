@@ -1,33 +1,53 @@
 body {
 	padding-top: 75px;
+	background: #000046;
+    background: linear-gradient(to right, #bdc3c7, #2c3e50);
 }
 
-.tools {
-	font-size: 1.5em;
-}
-
-table, th, td {
+h2 {
 	text-align: center;
-}
-
-table {
-	margin-top: 30px;
+	color: white;
 }
 
 .footer {
 	font-size: 0.8em;
 }
 
-label {
-	font-weight: bold;
-	font-size: 1.3em;
-	text-decoration: underline;
+.navbar-brand {
+    font-size:1.1em;
 }
 
-form {
-	margin: 40px 0px;
-	padding: 10px;
-	border: 2px solid #cccec4;
-    border-radius: 10px;
+
+.navbar-nav {
+    font-size:1.5em;
 }
 
+.container {
+	padding: 15px;
+}
+
+a {
+	color: black;
+}
+
+#icons {
+	font-size: 1.5em;
+}
+
+table, th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+thead th {
+    font-size: 1.2em;
+    padding: 15px;
+}
+table {
+    margin-top: 30px;
+}
+
+tbody {
+    background-color: white;
+    color:black;
+}

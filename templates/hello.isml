@@ -1,20 +1,23 @@
 <isdecorate template='pt_decorator'>
-    <iscomment>
+
     <h1>Page d'accueil</h1>
+    
+    <h2>Page d'accueil</h2>
+    
     
     <h3>Affichage de variables simples et d'attributs d'objets</h3>
     
     <p>la variable test vaut: ${test}</p>
-    </iscomment>
+
     <p>${customer.name.firstname} ${customer.name.lastname} est un client depuis ${customer.since} ans</p>
-    
+
     <p>Bienvenue <strong>${user.firstname} ${user.lastname}</strong>, vous êtes bien enregistré dans notre BDD.</p>
-    <iscomment>
+
     <h3>isinclude</h3>
 
-    <isinclude template="accueil" />
+    <isinclude template="accueil" />        
     <isinclude remote="Hello-Includetpl" />
-    
+
     <h3>isif</h3>
         
     <isif condition="${test == '0' AND tes2 == 'alpha'}">
@@ -36,7 +39,7 @@
             </isif>
         </isif>
     </isif>
-    
+
     <isif condition="${test == 1}">
         <p>G</p>
     </isif>
@@ -52,11 +55,11 @@
     <isloop items="${guests}" alias="var">
         <p>${var}</p>
     </isloop> 
-    </iscomment>
     <p>Les clients sont: </p>
     <isloop items="${customers}" alias="object">
         <p>${object.name.firstname} ${object.name.lastname} depuis ${object.since} ans</p>
-    </isloop> 
+    </isloop>
+
 
 </isdecorate>
   

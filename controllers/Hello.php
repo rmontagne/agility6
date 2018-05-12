@@ -1,14 +1,14 @@
 <?php
 
-require_once(dirname(__FILE__).'/../classes/Mysql.php');
-require_once(dirname(__FILE__).'/../classes/Product.php');
-require_once(dirname(__FILE__).'/../classes/User.php');
+require_once(dirname(__FILE__).'/../classes/DataBase/Mysql.php');
+require_once(dirname(__FILE__).'/../classes/ORM/Product.php');
+require_once(dirname(__FILE__).'/../classes/ORM/User.php');
 
 class Hello {
 
     
     public function Show() {
-        
+
         $customer = new stdClass();
         $customer->name = new stdClass();
         $customer->since = 45;
@@ -29,9 +29,8 @@ class Hello {
         
         $guests = [$guest1, $guest2, $guest3];
         
-        $user = User::getInstance(1);
+        $user = User::getInstance(2);
         $products = Product::getInstances(1);
-        
         $params = [
             'user'  =>  $user,
             'test'  =>  '0',
@@ -48,5 +47,5 @@ class Hello {
         return ' <br />TEST REMOTE INCLUDE <br />';
         
     }
-    
+
 }

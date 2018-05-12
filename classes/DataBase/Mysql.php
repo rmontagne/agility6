@@ -47,32 +47,31 @@ class Mysql extends DB {
         $result = $statement->fetchAll(PDO::FETCH_OBJ);
         $statement ->closeCursor();
         
-        if ($result) {
+        if (!empty($result)) {
             return $result[0];
+        } else {
+            return null;
         }
-        
-        return $result;
     }
        
     public function getValue($query, $params = [])
     {
         $statement = $this->_PDOInstance->prepare($query);
         $statement->execute($params);
-        $result = $statement->fetch(PDO::FETCH_OBJ); 
+        $result = $statement->fetch(); 
         $statement ->closeCursor();
-        return $result;   
+        return $result[0]; 
     }
          
     public function execute($query, $params = [])
     {
         $statement = $this->_PDOInstance->prepare($query);
-        $statement->execute($params); 
-        return true;
+        $return=$statement->execute($params);
+        return $return;
+        //retourne true/false 
     }
     
     public function lastInsertId() {
         return $this->_PDOInstance->lastInsertId();
-    }
-    
-    
+    }   
 }
