@@ -11,11 +11,10 @@ h2 {
 }
 
 .navbar-brand {
-    font-size:1.1em;
 }
 
 .navbar-nav {
-    font-size:1.5em;
+    font-size:1.3em;
 }
 
 #mainNav{
@@ -41,22 +40,54 @@ a {
 }
 
 .icon-link {
-	
 	font-size: 1.8em;
 	padding: 0px 5px ;
-	
 }
 
 .icons-span {
-	font-size: 1em;
-}
-
-#pagination {
-	margin-top: 10px;
-	margin-bottom: 10px;
+	font-size:1.5em;
 }
 
 .buttonUp {
-	background-color: transparent;
-	border: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
+
+
+.pagination {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+
+.nav-pag {
+	padding-left:0;
+	padding-right: 0;
+}
+
+table {
+    margin-top: 30px;
+    border: black 3px solid;
+    background-color: #FDFDFE;
+}
+
+th {
+	padding: 8px;
+	border-bottom: #586674 2px solid;
+	background-color: #E9ECEF;
+	font-size: 1.2em;
+	font-weight: normal;
+	text-align: center;
+	/*background-color:#E9ECEF #FDFDFE;*/
+}
+td
+{
+	padding: 10px 10px;
+	text-align: center;
+	border-bottom: #E2E5E9 1px solid;
+	border-right:  #E2E5E9 1px solid;
+
+}
+
+

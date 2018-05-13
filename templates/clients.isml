@@ -1,45 +1,15 @@
 <isdecorate template='pt_decorator'>
 
 <h2>Liste des Clients</h2> 
-       
-<table class = "table table-bordered table-striped">
-    <thead class="text-white bg-secondary">
-       <tr>
-           <th></th>
-           <th>Id</th>
-           <th>Firstname</th>
-           <th>Lastname</th>
-       </tr>
-    </thead>
-    <tbody>
-        <isloop items="${users}" alias="user">
-        <tr>
-            <td style = "width : 10%"class = "align-middle tools">
-                <a href="Clients-Updateclientview?id=${user.id}"><span class="fa fa-edit"></span></a>
-                <a href="Clients-Deleteclient?id=${user.id}"><span class="fa fa-trash"></span></a>
-            </td>
-            <td style = "width : 10%" class = "align-middle">${user.id}</td>
-            <td class = "align-middle">${user.firstname}</td>
-            <td class = "align-middle">${user.lastname}</td>
-        </tr>
-        </isloop> 
-    </tbody>
-    
-</table>
 
-<form action='Clients-Addclient' method='POST'>
-    <h2>Formulaire d'ajout</h2>
-    <div class='form-row'>
-        <div class = 'form-group col-sm-4'>
-            <label for='firstname'>Firstname</label>
-            <input class="form-control" type='text' name='firstname'/>
-        </div>
-        <div class = 'form-group col-sm-4'>
-            <label for='lastname' >Lastname</label>
-            <input class="form-control" type='text' name='lastname'/>
-        </div>
-    </div>
-    <input class='btn btn-secondary' type='submit' value='Add Entry'/>
-</form>
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addClient">
+    Ajouter un utilisateur.
+</button>
+
+<isinclude template ="addClientForm"/>
+
+<isinclude template ="listclients"/>
     
 </isdecorate>
+
+

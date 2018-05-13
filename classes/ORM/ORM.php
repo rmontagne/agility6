@@ -2,7 +2,7 @@
     
 require_once(dirname(__FILE__).'/../DataBase/Mysql.php');
 
-class ORM {
+abstract class ORM {
     /*
         Norme : 
         Class Name == table Name to lowercase
@@ -37,11 +37,11 @@ class ORM {
         return $count;
     }
     
-    public static function get10Instances($start) {
+    public static function getNInstances($start, $length='9', $colOrder='id', $dirOrder='ASC'  ) {
         $objs       = [];
         $table      = strtolower(get_called_class());
-        $query      = 'SELECT id_'.$table.' as id FROM '.$table .' ORDER BY id ASC LIMIT '.$start.', 9;';
-        
+        $query      = 'SELECT id_'.$table.' as id FROM '.$table .' ORDER BY '.$colOrder.' '.$dirOrder.' LIMIT '.$start.','.$length.';';
+
         $results    = Mysql::getInstance()->getResults($query);
         
         foreach ($results as $row) {
@@ -51,10 +51,10 @@ class ORM {
         return $objs;
     }
     
-    public static function getInstances() {
+    public static function getAllInstances() {
         $objs       = [];
         $table      = strtolower(get_called_class());
-        $query      = 'SELECT id_'.$table.' as id FROM '.$table .' ORDER BY id DESC LIMIT 9;';
+        $query      = 'SELECT id_'.$table.' as id FROM '.$table .' ORDER BY id ASC';
         
         $results    = Mysql::getInstance()->getResults($query);
         
@@ -95,7 +95,6 @@ class ORM {
         $properties = [];
         $values=[];
         
-        
         foreach ($vars as $property => $value) {
             if (in_array($property, ['id', 'table', 'qty','mdate','cdate'])) {
                 continue;
@@ -116,7 +115,6 @@ class ORM {
         if($return) { 
             $this->id = Mysql::getInstance()->lastInsertId();
         }
-
         return $return;
     }
     
@@ -140,7 +138,7 @@ class ORM {
             }
             $fields[] = $property.' = "'.$value.'"';
         }
-        
+        //ajouter mdate
         $query  = 'UPDATE '.$this->table.' SET '.implode(',' , $fields).' WHERE id_'.$this->table.' = '.$this->id;
 
         return Mysql::getInstance()->execute($query);

@@ -1,27 +1,33 @@
 <div class="table-responsive">
-	<table class="table table-bordered table-striped">
-		<thead class="text-white bg-secondary">
+	<table>
+		<thead>
 			<tr>
-				<th></th>
+				<th style = "width: 15%;"></th>
+				<th>Id</th>
 				<th>Ref</th>
 				<th>Nom</th>
-				<th>Prix</th>
-				<th>Quantité</th>
+				<th style = "width: 7%;">Prix</th>
+				<th style = "width: 7%;">Quantité</th>
 				<th>Date de création</th>
-				<th>Date de dernière modification</th>
+				<th>Date de modification</th>
 			</tr>
+	   </thead>
+	   <tbody>
 			<isloop items="${products}" alias="product">
 			<tr>
-				<td><span class="icons-span"> <a
-						href="Inventory-Updateprodview?id=${product.id}&page=${page}"
-						class="icon-link"><span class="fa fa-edit"></span></a> <a
-						href="Inventory-Deleteprod?id=${product.id}&page=${page}"
-						class="icon-link"><span class="fa fa-trash"></span></a> <a
-						href="Inventory-Zoomprod?id=${product.id}&page=${page}"
-						class="icon-link"><span class="fa fa-search-plus"></span></a>
-				</span></td>
+				<td>
+				    <span class="icons-span">
+				        <isinclude templateSpec="productUpdateForm"/>
+						<isinclude templateSpec="confirmationProduct"/>
+						<a href="Inventory-Zoom?id=${product.id}&page=${page}&pagelength=${pagelength}">
+						    <span class="fa fa-search-plus"></span>
+						</a>
+						<isinclude templateSpec="modalzoomprod"/>
+				    </span>
+				</td>
+				<td scope="row" class="align-middle">${product.id}</td>
 				<td scope="row" class="align-middle">${product.reference}</td>
-				<td class="align-middle">${product.name}</td>
+				<td >${product.name}</td>
 				<td class="align-middle">${product.price} €</td>
 				<td class="align-middle">${product.qty}</td>
 				<td class="align-middle">${product.id} ${product.cdate}</td>

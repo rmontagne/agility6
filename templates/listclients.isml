@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table>
+        <thead>
+           <tr>
+               <th></th>
+               <th>Id</th>
+               <th>Prénom</th>
+               <th>Nom</th>
+               <th>Date de création</th>
+               <th>Date de modification</th>
+           </tr>
+        </thead>
+        <tbody>
+            <isloop items="${users}" alias="user">
+            <tr>
+                <td style = "width : 10%"class = "align-middle tools">
+                    <isinclude templateSpec="clientUpdateForm"/>                                       
+                    <isinclude templateSpec="confirmationClient"/>
+                    <a href="Clients-Zoom?id=${user.id}&page=${page}&pagelength=${pagelength}"><span class="fa fa-search-plus"></span></a>
+                </td>
+                <td style = "width : 10%" class = "align-middle">${user.id}</td>
+                <td class = "align-middle">${user.firstname}</td>
+                <td class = "align-middle">${user.lastname}</td>
+                <td class = "align-middle">${user.cdate}</td>
+                <td class = "align-middle">${user.mdate}</td>
+            </tr>
+            </isloop> 
+        </tbody>
+    </table>
+</div>

@@ -21,7 +21,7 @@ class Product extends ORM {
     public static function getInstanceByRef($reference) {
         $table      = strtolower(get_called_class());
         $className  = get_called_class();
-        $query      = 'SELECT * FROM '.$table.' WHERE reference = '.$reference;;
+        $query      = 'SELECT * FROM '.$table.' WHERE reference = "'.$reference.'"';
         $row        = Mysql::getInstance()->getRow($query);
         if(is_null($row)) {
             return null;

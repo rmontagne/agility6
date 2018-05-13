@@ -29,8 +29,7 @@ class Hello {
         
         $guests = [$guest1, $guest2, $guest3];
         
-        $user = User::getInstance(2);
-        $products = Product::getInstances(1);
+        $user = User::getInstance(7);
         $params = [
             'user'  =>  $user,
             'test'  =>  '0',

@@ -11,9 +11,9 @@
 				<a href="#" class="btn btn-dark">Ajouter au panier</a>
 				<iscomment>
 				<span class = "icons-span">
-					<a href="Inventory-Updateprodview?id=${product.id}" class="icon-link"><span class="fa fa-edit"></span></a>
-					<a href="Inventory-Deleteprod?id=${product.id}" class="icon-link"><span class="fa fa-trash"></span></a>
-					<a href="Inventory-Zoomprod?id=${product.id}" class="icon-link"><span class="fa fa-search-plus"></span></a>
+					<a href="Inventory-Updateform?id=${product.id}" class="icon-link"><span class="fa fa-edit"></span></a>
+					<a href="Inventory-Delete?id=${product.id}" class="icon-link"><span class="fa fa-trash"></span></a>
+					<a href="Inventory-Zoom?id=${product.id}" class="icon-link"><span class="fa fa-search-plus"></span></a>
 				</span>
 				</iscomment>
 			</div>

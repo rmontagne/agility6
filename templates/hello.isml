@@ -1,9 +1,9 @@
 <isdecorate template='pt_decorator'>
 
-    <h1>Page d'accueil</h1>
-    
+
+
     <h2>Page d'accueil</h2>
-    
+<iscomment>     
     
     <h3>Affichage de variables simples et d'attributs d'objets</h3>
     
@@ -60,6 +60,6 @@
         <p>${object.name.firstname} ${object.name.lastname} depuis ${object.since} ans</p>
     </isloop>
 
-
+</iscomment>  
 </isdecorate>
   

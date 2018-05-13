@@ -4,7 +4,7 @@
 
 <p class="lead"> Le catalogue comprend ${count} objets</p>
 
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addFrom">
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addForm">
     Ajouter un produit au catalogue.
 </button>
 <isinclude template ="pagination"/>

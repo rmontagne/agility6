@@ -1,4 +1,5 @@
 <?php
+
 require_once('Parser.php');
 
 class CSVParser extends Parser
