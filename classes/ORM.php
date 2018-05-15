@@ -23,7 +23,7 @@ class ORM {
         $className  = get_called_class();
         $table      = strtolower($className);
         
-        $query      = 'SELECT id_'.$table.' as id FROM '.$table;
+        $query      = 'SELECT id_'.$table.' as id FROM '.$table.' ORDER BY id ASC';
         
         $results    = Mysql::getInstance()->getResults($query);
         
