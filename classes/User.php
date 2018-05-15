@@ -7,7 +7,7 @@ class User extends ORM {
     protected $id;
     protected $firstname;
     protected $lastname;
-    protected $age;
+    //protected $age;
     
     public function getFirstname() {
         return $this->firstname;
@@ -27,14 +27,14 @@ class User extends ORM {
         return $this;
     }
     
-    public function getAge() {
+    /*public function getAge() {
         return $this->age;
     }
     
     public function setAge($age) {
         $this->age = $age;
         return $this;
-    }
+    }*/
 
     
 }

@@ -7,17 +7,6 @@ require_once(dirname(__FILE__).'/../classes/User.php');
 class Hello {
     
     
-    public function Loop() {
-        
-        $tabs = ['Romain', 'Romain3', 'Romain5'];
-        
-        return Template::render('loop', array(
-            'tabs' => $tabs,
-            'products' => Product::getInstances(),
-            'users' => User::getInstances()
-        ));
-    }
-    
     public function Show() {
         
         //GET ALL OBJECTS
