@@ -53,6 +53,10 @@ class ORM {
         return $obj;      
     }
     
+    public function getId() {
+        return $this->id;
+    }
+    
     //ADD NEW OBJECT ON DB
     public function add() {
         

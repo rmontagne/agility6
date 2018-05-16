@@ -19,6 +19,8 @@ class Hello {
     
     public function Show() {
         
+        print_r($_GET);
+        
         //GET ALL OBJECTS
         /*$products   = Product::getInstances();
         

@@ -1,0 +1,49 @@
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+
+    $(document).ready( function() {
+
+        setTimeout(function() {
+            $.ajax({
+                url: 'Ajax-Json',
+                success: function(content) {
+                    var products = $.parseJSON(content);
+                    
+                    var html = '<ul id="productList">';
+                    $.each(products, function(key, item) {
+                         html += '<li data-id-product="' + item.id + '">' + item.name + '</li>';
+                    });
+                    html += '</ul>';
+                    $('#testAjax').html(html);
+                }
+            });
+        }, 1000);
+        
+        $('#productList li').on('click', function() {
+           //alert('Click sur le produit'); 
+           
+     
+           
+        });
+        
+        $(document).on('click', '#productList li', function() {
+        
+            var idProduct = $(this).attr('data-id-product');
+     
+            $.ajax({
+                method: 'POST',
+                url: 'Ajax-Getproductprice',
+                data: {idProduct: idProduct},
+                success: function(content) {
+                    var product = $.parseJSON(content);
+                    alert(product.name + ' ' + product.price + ' €')
+                }
+            });
+            
+        });
+        
+    });
+    
+</script>
+
+<div id="testAjax">0</div>
