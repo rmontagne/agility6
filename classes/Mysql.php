@@ -1,6 +1,7 @@
 <?php
 
 require_once(dirname(__FILE__).'/DB.php');
+require_once(dirname(__FILE__).'/../config.inc.php');
 
 class Mysql extends DB {
     

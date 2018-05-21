@@ -1,6 +1,6 @@
-<?php
+<?php 
 
-Class Import {
+Class CsvReader {
     
     public function ParseCsv($filename) {
         $content    = file_get_contents($filename);
@@ -14,17 +14,7 @@ Class Import {
         foreach ($tmp as $row) {
             $cols = explode(";", $row);
             
-            if (!$firstLoop) {
-                $headers = $cols;
-                $firstLoop = true;
-            } else {
-                
-                if (count($cols) != count($headers)) {
-                    continue;
-                }
-                
-                $rows[] = array_combine($headers, $cols);
-            }
+            $rows[] = $cols;
         }
         
         return $rows;

@@ -4,12 +4,6 @@ require_once(dirname(__FILE__).'/Mysql.php');
 
 class ORM {
     
-    /*
-        Norme : 
-        Class Name == table Name to lowercase
-        ID = id_tableName
-    */
-    
     private $table;
     private $id;
     
@@ -31,7 +25,7 @@ class ORM {
         $className  = get_called_class();
         $table      = strtolower($className);
         
-        $query      = 'SELECT id_'.$table.' as id FROM '.$table;
+        $query      = 'SELECT id_'.$table.' as id FROM '.$table.' ORDER BY id';
         
         $results    = Mysql::getInstance()->getResults($query);
         
@@ -105,6 +99,14 @@ class ORM {
         $query  = 'UPDATE '.$this->table.' SET '.implode(',' , $fields).' WHERE id_'.$this->table.' = '.$this->id;
         
         Mysql::getInstance()->execute($query);
+    }
+    
+    public function save() {
+        if ($this->id) {
+            return $this->update();
+        } else {
+            return $this->add();
+        }
     }
     
 }
