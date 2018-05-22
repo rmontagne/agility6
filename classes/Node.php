@@ -16,14 +16,12 @@ class Node {
         $this->right = null;
     }
     public function addNode($node) {
-        //if = 2x $this->key then $this->left = $node; if = 2x $this->key +1 $this->right = $node
         if ($node->key == 2*($this->key)) {
             $this->left = $node;
         }
         elseif ($node->key == (2*($this->key))+1) {
             $this->right = $node;
         } else {
-            //calculate rightmost and leftmost at every step, additionate the two value then /2 if < go left ($this->left->addNode($node)) if > go right ($this->right->addNode($node))
             for($i = 1 ; $i<20 ; $i++){
                 $leftmost = 0;
                 $rightmost= 0;
