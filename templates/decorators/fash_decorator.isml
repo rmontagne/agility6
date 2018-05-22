@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fashe.com</title>
+        <isinclude template="decorators/fash_css_link"/>
+    </head>
+
+	<body class="animsition">
+	
+		<isinclude template="decorators/fash_header" />
+		
+		<isreplace />
+		
+		<isinclude template="decorators/fash_footer" />
+		<isinclude template="decorators/fash_to_top" />
+		
+		<isinclude template="decorators/fash_js_script"/>
+	</body>
+
+</html>
+
+
+
+
+
+
+

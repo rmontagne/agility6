@@ -52,7 +52,7 @@
 
         static private function decorate($content, $params) {
             //Allow only one decorator
-            if (preg_match('#<isdecorate template=\'([a-z_]+)\'>(.*)?</isdecorate>#s', $content, $matches)) {
+            if (preg_match('#<isdecorate template=\'([a-z_/]+)\'>(.*)?</isdecorate>#s', $content, $matches)) {
 
                 $decorator = self::render($matches[1], $params);
                 $isreplace = self::parseContent($matches[2], $params);

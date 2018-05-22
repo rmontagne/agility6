@@ -1,0 +1,11 @@
+<isdecorate template='decorators/fash_decorator'>
+
+    <isinclude template="pages/home/fash_slide" />
+    <isinclude template="pages/home/fash_banner_1" />
+    <isinclude template="pages/home/fash_new_product" />
+    <iscomment><isinclude template="pages/home/fash_banner_2" />
+    <isinclude template="pages/home/fash_blog" />
+    <isinclude template="pages/home/fash_instagram" /></iscomment>
+    <isinclude template="pages/home/fash_shipping" />
+    
+</isdecorate>
