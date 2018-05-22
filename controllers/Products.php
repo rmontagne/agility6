@@ -15,6 +15,7 @@ class Products {
     }
     
     public function Update() {
+        $category       = intval($_POST['category']);
         $name           = strval($_POST['name']);
         $price          = floatval($_POST['price']);
         $qty            = intval($_POST['qty']);
@@ -26,6 +27,7 @@ class Products {
         
         $product       = product::getInstance($id);
         
+        $product->setCategory($category);
         $product->setName($name);
         $product->setPrice($price);
         $product->setQty($qty);
@@ -46,6 +48,7 @@ class Products {
     }
     
     public function Add() {
+        $category       = intval($_POST['category']);
         $name           = strval($_POST['name']);
         $price          = floatval($_POST['price']);
         $qty            = intval($_POST['qty']);
@@ -55,6 +58,7 @@ class Products {
         
         $newP = new Product();
         
+        $newP->setCategory($category);
         $newP->setName($name);
         $newP->setPrice($price);
         $newP->setQty($qty);

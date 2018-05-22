@@ -4,6 +4,7 @@ require_once(dirname(__FILE__).'/ORM.php');
 
 class Product extends ORM {
     
+    protected $id_category;
     protected $name;
     protected $description;
     protected $reference;
@@ -11,6 +12,15 @@ class Product extends ORM {
     protected $image;
     protected $qty;
         
+    public function getCategory() {
+        return $this->id_category;
+    }
+    
+    public function setCategory($id_category) {
+        $this->id_category = $id_category;
+        return $this;
+    }
+    
     public function getName() {
         return $this->name;
     }

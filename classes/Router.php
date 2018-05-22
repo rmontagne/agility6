@@ -3,10 +3,16 @@
     class Router {
         
         public static function run() {
-            
-            $controller = $_GET['controller'];
+            if(!isset($_GET['controller'])){
+                $controller ="Hello";
+            } else {
+                $controller = $_GET['controller'];
+            }
+            if(!isset($_GET['action'])) {
+                $action ="Show";
+            } else {
             $action     = $_GET['action'];
-            
+            }
             echo self::callController($controller, $action);   
         }
         

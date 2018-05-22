@@ -46,8 +46,8 @@
 		
 		<isloop items="${users}" alias="element">
 			<tr>
-				<td style="text-align:center; vertical-align:middle;" class="td editable" onclick="Modify();">${element.firstname}</td>
-				<td style="text-align:center; vertical-align:middle;" class="td editable" onclick="Modify();">${element.lastname}</td>
+				<td style="text-align:center; vertical-align:middle;" class="editable" onclick="Modify();">${element.firstname}</td>
+				<td style="text-align:center; vertical-align:middle;" class="editable" onclick="Modify();">${element.lastname}</td>
 				<td style="text-align:center; vertical-align:middle;">${element.table}</td>
 				<td style="text-align:center; vertical-align:middle;">${element.id}</td>
 				<td style="text-align:center; vertical-align:middle;"> <input type="button" onclick="UpdateUser();" class="use-address btn btn-outline-info" value="Update" /><input type="button" onclick="DeleteUser();" class="use-address btn btn-outline-info" value="Delete" /> </td>

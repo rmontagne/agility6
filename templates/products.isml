@@ -18,6 +18,10 @@
       <div class="modal-body">
         <form id="addProduct" method="post">
         		<div class="form-group">
+    				<label for="category">Category</label>
+    				<input type="text" class="form-control" name="category">
+  			</div>
+        		<div class="form-group">
     				<label for="name">Name</label>
     				<input type="text" class="form-control" name="name">
   			</div>
@@ -52,6 +56,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
+			<th style="text-align:center; vertical-align:middle;">Category</th>
 			<th style="text-align:center; vertical-align:middle;">Name</th>
 			<th style="text-align:center; vertical-align:middle;">Price</th>
 			<th style="text-align:center; vertical-align:middle;">Quantity</th>
@@ -66,14 +71,15 @@
 		
 		<isloop items="${products}" alias="element">
 			<tr>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable">${element.name}</td>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable">${element.price}</td>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable">${element.qty}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.category}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.name}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.price}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.qty}</td>
 				<td style="text-align:center; vertical-align:middle;">${element.table}</td>
 				<td style="text-align:center; vertical-align:middle;">${element.id}</td>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable">${element.reference}</td>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable">${element.description}</td>
-				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="td editable"><img class="image" src="http://${element.image}" /></td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.reference}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable">${element.description}</td>
+				<td style="text-align:center; vertical-align:middle;" onclick="Modify();" class="editable"><img class="image" src="http://${element.image}" /></td>
 				<td style="text-align:center; vertical-align:middle;"> <input type="button" onclick="UpdateProduct();" class="use-address btn btn-outline-info" value="Update" /><input type="button" onclick="DeleteProduct();" class="use-address btn btn-outline-info" value="Delete" /> </td>
 			</tr>
 		</isloop>
